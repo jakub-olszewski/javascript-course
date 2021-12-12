@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pl">
+    <head>
+        <title>ZSE-JS Project - Calculator</title>
+        <meta charset="utf-8"/>
+        <meta name="author" content="Jakub Olszewski">
+        <link rel="stylesheet" href="style.css">
+        <link rel="icon" type="image/png" href="./../../favicon.png"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    </head>
+    <body>
+        <script src="script.js"></script>
+        <h1>Kalkulator</h1>
+        <p>
+            Projekt kalkukatora w JavaScript<br><br>
+            Użycie: <br>Wypełnij pola, następnie wciśnij działanie. Poniżej wyświetli się wynik.<br>
+        </p>
+        <p>
+            <b>Zadanie 1:</b> Testując dodawanie, które działa prawidłowo sprawdź jak działa w kodzie.<br>
+            Dokończ tak, aby działały wszystkie działania. W dzieleniu przez zero zrobić należy komunikat alert()<br>
+            Wykorzystując instrukcje warunkową if.<br>
+        </p>
+        <p>
+        <form name="calculator">
+            <input type="number" name="a" step="any"  class="form-control"><br><br>
+            <input type="button" value="+" onclick="addition()" class="form-control"><br><br>
+            <input type="button" value="-" onclick="subtraction()" class="form-control">
+            <input type="button" value="x" onclick="multiplication()" class="form-control">
+            <input type="button" value="/" onclick="division()"class="form-control" >
+            <input type="number" name="b" step="any"  class="form-control"><br><br>
+        </form>
+        <p class="bold">Wynik:</p>
+        <div id="result" class="result"></div>
+
+        <br><br><br><br><br><br>
+
+        <p>
+            <b>Zadanie 2:</b> Popraw kod poniżej tak, aby można było wybrać z listy:<br>
+            Dodawanie, odejmowanie, mnożenie lub dzielenie.<br>
+            Następnie po wciśnięciu "=" w polu wyświetli się wynik.<br>
+        </p>
+        <div id="calculator">
+            <input type="number" name="a" step="any"  class="form-control">
+            <select id="action" class="form-control">
+                <option value="add">+</option>
+                <option value="sub">-</option>
+                <option value="unknown"></option>
+            </select>
+            <input type="number" name="b" step="any"  class="form-control">
+            <input type="button" value="=" onclick="execute()">
+            <input type="number" maxlength="4" size="4" name="result2" step="any"  class="form-control">
+        </div>
+        </p>
+        <p>
+        </p>
+
+    </body>
+</html>
