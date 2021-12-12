@@ -7,12 +7,16 @@
         <meta name="author" content="Jakub Olszewski">
         <meta name="description" content="spis treści">
         <link rel="stylesheet" href="style.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     </head>
     <body>
         <h1>ZSE Pracownia aplikacji internetowych</h1>
         <h3>Nauczyciel: Jakub Olszewski</h3>      
-        <button onclick="location.href='https://github.com/jakub-olszewski/javascript-course/archive/refs/heads/main.zip';">Pobierz aktualizacje</button>
-        <br><br>  
+        <button style="background: #0a73bd;margin-bottom: 15px;
+" onclick="location.href='https://github.com/jakub-olszewski/javascript-course/archive/refs/heads/main.zip';">Pobierz wszystko</button>
+
+        <button style="background: rgb(117,201,33);margin-bottom: 15px;" onClick="location.href='https://github.com/jakub-olszewski/javascript-course/tree/main/strona';" alt="Minimalna strona HTML z JavaScript">Minimalna strona</button>
+        <br><br>
         <script>
 
             title("Struktura języka JavaScript");
@@ -68,7 +72,7 @@
                 createExamples(3,'Zasięg blokowy',35,35);
                 createExamples(3,'Funkcje wbudowane',36,41);
 
-
+                createProject("calculator");
 
             function title(title){
                 document.write("<h3>"+title+"</h3>");
@@ -87,6 +91,12 @@
                     var countZeros = positions-String(i).length;
                     document.write("<a href='x"+getZeros(countZeros)+i+"/index.html'><i>Ćwiczenie "+dzial+"."+i+"</i></a><br>");
                 }
+            }
+
+            function createProject(name){
+                document.write("<br>");
+                document.write("<a href='projects/"+name+"/index.html'>Projekt "+name+"</a><br>");
+
             }
 
             function createExamples(dzial,title,start, stop){
