@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pl">
+    <head>
+        <title>ZSE-JS Project - SayHello</title>
+        <meta charset="utf-8"/>
+        <meta name="author" content="Jakub Olszewski">
+        <link rel="stylesheet" href="style.css">
+        <link rel="icon" type="image/png" href="./../../favicon.png"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    </head>
+    <body>
+
+        <script src="script.js"></script>
+        <h1>Say Hello</h1>
+        <p>
+            Projekt Say Hello w JavaScript<br><br>
+            Użycie: Wypełnij pola, następnie wciśnij przycisk. Poniżej wyświetli się napis.<br>
+        </p>
+        <p>
+            <b>Zadanie 1:</b> Popraw kod tak, aby:<br>
+            <ul>
+                <li>a) były dwa komunikaty na puste i zbyt krótkie imię ( mniejsze niż 3 znaki )</li>
+                <li>b) dodaj pole nazwisko i adres oraz dodaj do wypisywanego napisu ( pola nie mogą być puste )</li>
+                <li>c) dodaj weryfikację, aby komunikat wyświetlał się gdy wiek jest ujemny</li>
+                <li>d) dodaj przycisk weryfikuj na który wykona się metoda validate()</li>
+            </ul>
+        </p>
+        <br><br><h2>Formularz</h2>
+        Imię:<input type="text" id="name" name="name" step="any"  class="form-control">    
+        <form name="helloForm">
+            Wiek:<input type="number" name="age" step="any"  class="form-control"><br><br>
+        </form>
+        <p class="bold">Witam:</p>
+        <div id="result" class="result"></div>
+        <input type="button" value="Wciśnij mnie!" onclick="sayHello()" class="form-control"><br><br>
+
+    </body>
+</html>
