@@ -3,7 +3,8 @@ template/
 # exercise
 #x*/
 x*/answer
-
+**/answer
+projects/*/answer
 # exercise special
 p0*/
 
