@@ -20,47 +20,31 @@
         <script>
 
             title("Struktura języka JavaScript");
-
                 createExamples(3,'JavaScript w HTML',1,2);
-
                 createExamples(3,'Instrukcja document.write',3,6);
 
             title("Składnia języka JavaScript");
-
                 createExamples(3,'Wprowadzenie',7,7);
-
                 createExamples(3,'Komentarze',8,8);
-
                 createExamples(3,'Zmienne',9,10);
                 createOneExercise(3,1);
-
                 createExamples(3,'Skalarne typy danych',11,13);
-
                 createExamples(3,'Złożone typy danych',14,15);
-
                 createExamples(3,'Operatory arytmetyczne',16,17);
-
                 createExamples(3,'Operatory porównania',18,19);
 
             title("Instrukcje sterujące");
-
                 createExamples(3,'Instrukcja warunkowa',20,20);
                 createOneExercise(3,2);
-
                 createExamples(3,'Instrukcja switch',21,21);
                 createOneExercise(3,3);
-
                 createExamples(3,'Pętla for',22,24);
                 createExercise(3,4,5);
-
                 createExamples(3,'Pętla while',25,25);
                 createOneExercise(3,6);
-
                 createExamples(3,'Pętla do...while',26,26);
-
                 createExamples(3,'Instrukcja break',27,27);
                 createOneExercise(3,7);
-
                 createExamples(3,'Instrukcja continue',28,28);
                 createExercise(3,8,9);
 
@@ -87,7 +71,18 @@
                 createExamples(3,'Właściwość prototype',48,48);
                 createOneExercise(3,12);
 
-
+            title("Obiekty wbudowane języka JavaScript");
+                createExamples(3,'Obiekt String',49,53);
+                createExamples(3,'Obiekt Array',54,58);
+                createOneExercise(3,13);
+                createExample(3,'Obiekt Array - Tablice wielowymiarowe',59);
+                createExample(3,'Obiekt Array - Łączenie elementów tablicy',60);  
+                createExample(3,'Obiekt Array - Odwracanie kolejności elementów tablicy',61);  
+                createOneExercise(3,14);
+                createExamples(3,'Obiekt Array - Sortowanie',62,64);  
+                createOneExercise(3,15);
+                createExamples(3,'Obiekt Date',66,67);
+                createOneExercise(3,16);
 
             function title(title){
                 document.write("<h3>"+title+"</h3>");
@@ -123,6 +118,10 @@
                     var countZeros = positions-String(i).length;
                     document.write("<a href='e"+getZeros(countZeros)+i+"/index.html'>Przykład "+dzial+"."+i+"</a><br>");
                 }
+            }
+
+            function createExample(dzial,title,startStop){
+                createExamples(dzial,title,startStop, startStop);
             }
 
             function getZeros(count){
