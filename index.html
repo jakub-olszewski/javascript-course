@@ -8,6 +8,7 @@
         <meta name="description" content="spis treści">
         <link rel="stylesheet" href="style.css">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <script src="script.js"></script>
     </head>
     <body>
         <h1>ZSE Pracownia aplikacji internetowych</h1>
@@ -83,55 +84,16 @@
                 createOneExercise(3,15);
                 createExamples(3,'Obiekt Date',66,67);
                 createOneExercise(3,16);
-
-            function title(title){
-                document.write("<h3>"+title+"</h3>");
-            }
-
-            function createOneExercise(dzial,startStop){
-                createExercise(dzial,startStop,startStop);
-            }
-
-            function createExercise(dzial,start, stop){
-                var positions = 3;
-                document.write("<br>");
-                for(var i = start ; i<=stop ; i++)
-                {
-                    //count zeros
-                    var countZeros = positions-String(i).length;
-                    document.write("<a href='x"+getZeros(countZeros)+i+"/index.html'><i>Ćwiczenie "+dzial+"."+i+"</i></a><br>");
-                }
-            }
-
-            function createProject(name){
-                document.write("<br>");
-                document.write("<a href='projects/"+name+"/index.html'>Projekt "+name+"</a><br>");
-
-            }
-
-            function createExamples(dzial,title,start, stop){
-                document.write("<p>"+title+"</p>");
-                var positions = 3;
-                for(var i = start ; i<=stop ; i++)
-                {
-                    //count zeros
-                    var countZeros = positions-String(i).length;
-                    document.write("<a href='e"+getZeros(countZeros)+i+"/index.html'>Przykład "+dzial+"."+i+"</a><br>");
-                }
-            }
-
-            function createExample(dzial,title,startStop){
-                createExamples(dzial,title,startStop, startStop);
-            }
-
-            function getZeros(count){
-                var zeros = "";
-                for(var i = 0 ; i < count ; i++){
-                    zeros += "0";
-                }
-                return zeros;
-            }
-            
+                
+            title("Obiekty DOM");
+                createExamples(3,'Obiekty DOM',68,68);
+                createExamples(3,'Obiekt window',69,70);
+                createExamples(3,'Obiekt navigator',71,71);
+                createExamples(3,'Obiekt document',72,74);
+                createOneExercise(3,17);
+                createOneExercise(3,18);
+                createExamples(3,'Obiekt location',75,75);
+                createExamples(3,'Obiekt form',76,77);
         </script>
         <br>
     </body>
