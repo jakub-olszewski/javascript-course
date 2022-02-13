@@ -9,6 +9,24 @@
         <link rel="stylesheet" href="style.css">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
         <script src="script.js"></script>
+        <script>
+            window.onload = function() {
+                var coll = document.getElementsByClassName("collapsible");
+                var i;
+
+                for (i = 0; i < coll.length; i++) {
+                coll[i].addEventListener("click", function() {
+                    this.classList.toggle("active");
+                    var content = this.nextElementSibling;
+                    if (content.style.display === "block") {
+                    content.style.display = "none";
+                    } else {
+                    content.style.display = "block";
+                    }
+                });
+                }            
+            };
+        </script>
     </head>
     <body>
         <h1>ZSE Pracownia aplikacji internetowych</h1>
@@ -101,6 +119,11 @@
                 createExamples(3,'Obsługa zdarzenia jako właściwości obiektu',80,80);
                 createExamples(3,'Zdarzenia myszy',81,83);
                 //createOneExercise(3,19);
+
+            title("Wykorzystanie skryptów na stronie internetowej");
+                createExamples(3,'Animacje',84,85);
+                createOneExercise(3,19);
+                createOneExercise(3,20);
 
         </script>
         <br>

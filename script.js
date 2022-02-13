@@ -11,30 +11,34 @@ function createOneExercise(dzial,startStop){
 
 function createExercise(dzial,start, stop){
     var positions = 3;
-    document.write("<br>");
+    // document.write("<br>");
     for(var i = start ; i<=stop ; i++)
     {
         //count zeros
         var countZeros = positions-String(i).length;
-        document.write("<a href='x"+getZeros(countZeros)+i+"/index.html'><i>Ćwiczenie "+dzial+"."+i+"</i></a><br>");
+        document.write("<div class='collapsible-todo'><a href='x"+getZeros(countZeros)+i+"/index.html'><i>Ćwiczenie "+dzial+"."+i+"</i></a></div>");
     }
 }
 
 function createProject(name){
-    document.write("<br>");
-    document.write("<a href='projects/"+name+"/index.html'>Projekt "+name+"</a><br>");
+    // document.write("<br>");
+    document.write("<div class='collapsible-todo'><a href='projects/"+name+"/index.html'>Projekt "+name+"</a></div>");
 
 }
 
 function createExamples(dzial,title,start, stop){
-    document.write("<p>"+title+"</p>");
+    // document.write("<p>"+title+"</p>");
+    document.write('<button type="button" class="collapsible">'+title+'</button>');
     var positions = 3;
+
+    document.write('<div class="content"><p>');
     for(var i = start ; i<=stop ; i++)
     {
         //count zeros
         var countZeros = positions-String(i).length;
-        document.write("<a href='e"+getZeros(countZeros)+i+"/index.html'>Przykład "+dzial+"."+i+"</a><br>");
+        document.write("<a href='e"+getZeros(countZeros)+i+"/index.html'>Przykład "+dzial+"."+i+"</a><br><br>");
     }
+    document.write('</p></div>');
 }
 
 function createExample(dzial,title,startStop){
