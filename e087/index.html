@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+    <html lang="pl">
+        <head>
+            <title>ZSE-JS Zdarzenia</title>
+            <meta charset="utf-8"/>
+            <meta name="author" content="Jakub Olszewski">
+            <link rel="icon" type="image/png" href="./../favicon.png"/>
+            <style type="text/css">
+                .pole {
+                    position: absolute;
+                    left: 90px;
+                } 
+            </style>
+            <script>
+                function adres() {
+                    if (document.getElementById('mail').value != 'e-mail') {//wymagana wartość 'e-mail' w polu
+                        alert ('Wpisz tekst: "e-mail"');
+                        return false;
+                    }
+                    return true;
+                } 
+            </script>
+        </head>
+        <body background-color="#dfdfdf">
+            <form action="" method="post">
+                <b>Nazwisko:</b>
+                <input class="pole" name="nazw" id="nazw" value="" size="40"><br>
+                <b>e-mail:</b>
+                <input class="pole" name="mail" id="mail" value="" size="40" onblur="return adres()"><br><!--onblur wykona się gdy zmienimy focus -->
+                <b>Zawód: </b>
+                <input class="pole" name="zawod" id="zawod" value="" size="40"><br><br>
+                <input type="submit" value="Wyślij">&nbsp; &nbsp;
+            </form>
+        </body> 
+</html>
