@@ -1,7 +1,27 @@
 /**
  * Metody 
  **/
-    function title(title){
+ function urlExists(url, callback) {
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4) {
+            callback(xhr.status < 400);
+        }
+    };
+    xhr.open('HEAD', url);
+    xhr.onerror = function() {
+        alert("Zadanie należy wykonać samemu a następnie przesłać!");
+        };
+    xhr.send();
+}
+
+function answer() {
+    urlExists('./answer/index.html', function(exists) {
+        if(!exists) alert("Zadanie należy wykonać samemu a następnie przesłać!");
+    });
+}
+
+function title(title){
     document.write("<h3>"+title+"</h3>");
 }
 
