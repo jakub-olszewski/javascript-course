@@ -1,0 +1,142 @@
+ <!DOCTYPE html>
+<html lang="pl">
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+        <script type="text/javascript" src="jquery.min.js"></script>
+        <script type="text/javascript" src="qrcode.js"></script>
+        <style>
+            #payments {
+              font-family: Arial, Helvetica, sans-serif;
+              border-collapse: collapse;
+              width: 100%;
+            }
+            
+            #payments td, #payments th {
+              border: 1px solid #ddd;
+              padding: 8px;
+            }
+            
+            #payments tr:nth-child(even){background-color: #f2f2f2;}
+            
+            #payments tr:hover {background-color: #ddd;}
+            
+            #payments th {
+              padding-top: 12px;
+              padding-bottom: 12px;
+              text-align: left;
+              background-color: #04AA6D;
+              color: white;
+            }
+
+            img {
+                width: 100%;
+                display: block;
+            }
+            </style>
+    </head>
+    <body>
+        <script charset="utf-8">
+
+/*
+
+Zadanie:
+
+Utwórz klasę z wykorzystanie konstruktora o nazwie Payment.
+Klasa ma posiadać pola:
+* id - liczba porządkowa
+* name - nazwa odbiorcy
+* account - numer konta
+* title - tytuł przelewu
+* description - opis odbiorcy
+
+Klasa ma posiadać metody:
+* getText() w formacie przykład '|PL|01 8191 0003 2211 5626 4067 1090|123.45|Orange|Przelew za telefon|||'
+
+Dodatkowe metody (dla chętnych):
+* getCode() - wyświetlenie qrcode z użyciem biblioteki qrcode.js
+* generateQrcode() - wygenerowanie kodu za pomocą metody makeCode()
+
+Obiekty Payment mają być trzymane w tablicy 
+następnie wyświetlanie w tabeli w postaci:
+
+nazwa
+numer konta
+tytuł przelewu
+-----------------------
+nazwa
+numer konta
+tytuł przelewu
+-----------------------
+nazwa
+numer konta
+tytuł przelewu
+
+Do wypisywania elementów tablicy należy użyć forEach
+
+*/
+
+            class Payment{// klasa płatność
+                constructor(id, name, account, amount, title, description) {
+					this.id = id;
+                    this.name = name;
+                    this.account = account;
+                    this.amount = amount;  
+					this.title = title;
+                    this.description = description;    
+                
+                    this.getCode = function () {
+                        document.write('<tr>');
+                            document.write('<td class="block" style="width:190px; height:190px;"><div id="qrcode'+this.id+'" style="display:none;align: center;width:150px; height:150px; margin:20px;"></div></td>');
+                            document.write('<td>');
+                                document.write('<p>Nazwa: <b>'+this.name+'</b></p>');
+                                document.write('<p>Numer konta: <b>'+this.account+'</b></p>');
+                                document.write('<p>Tytuł: <b>'+this.title+'</b></p>');
+                                document.write('<p>Kwota: <b>'+this.amount+' zł</b></p>');
+                                document.write('<button onclick="myFunction('+this.id+')">Pokaż QRcode</button>')
+                            document.write('</td>');
+                        document.write('</tr>');
+                    }
+					
+					this.getText = function () {
+						return '|PL|'+account.replace(/\s+/g,'')+'|'+'0'+amount.replace('.','')+'|'+name+'|'+title+"|||"; 
+					}
+
+                    this.generateQrcode = function(){
+                        var sideSize = 300;
+                        var settings = {text:'', width: sideSize, height: sideSize};
+                        var qrcode = new QRCode(document.getElementById("qrcode"+this.id), settings);
+                        qrcode.clear();
+                        qrcode.makeCode(this.getText());
+                    }
+
+                }
+
+            }
+
+            function myFunction(id) {
+                var x = document.getElementById("qrcode"+id);
+                if (x.style.display === "none") {
+                    x.style.display = "block";
+                } else {
+                    x.style.display = "none";
+                }
+            }
+
+            var arrayPayment = [];
+
+            arrayPayment.push(new Payment(1,"Orange","70 1050 0099 7466 0000 9232 0314","59.98","Faktura neostrada", "Internet"));
+            arrayPayment.push(new Payment(2,"Plus","01 8191 0003 2211 5626 4067 1090","123.23","internet", "opis"));
+            arrayPayment.push(new Payment(3,"Gmina Suchy las","97 9043 1054 8026 0405 0297 2001","73.00","Podatek od nieruchomości", ""));
+
+            document.write('<table id="payments"><tr><th>QRCode</th><th>Opis</th></tr>');
+            arrayPayment.forEach( function(payment){
+				payment.getCode();
+                payment.generateQrcode();
+            });
+            document.write('</table>');
+
+        </script>
+    </body>
+</html>
+         
