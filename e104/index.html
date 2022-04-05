@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pl">
+        <head>
+            <title>ZSE-JS Zdarzenia</title>
+            <meta charset="utf-8"/>
+            <meta name="author" content="Jakub Olszewski">
+            <link rel="icon" type="image/png" href="./../favicon.png"/>
+            <script src="js/jquery-3.6.0.js"></script>
+            <script src="js/skrypt.js"></script>
+            <style type="text/css">
+                body {
+                    background: #000000;
+                    margin: 10px auto;
+                    width: 692px;
+                    font: 75%/120% Arial, sans-serif;
+                }
+                h2{
+                    font: bold 190%/100% Arial, Helvetica, sans-serif;
+                    margin: 0 0 .2em;
+                    color: whitesmoke;
+                }
+                h2 em{
+                    font: normal 80%/100% Arial, Helvetica, sans-serif;
+                    color: #999999;
+                }
+                #zdjecie_d {
+                    border: solid 1px #ccc;
+                    width: 620px;
+                    height: 412px;
+                    padding: 30px;
+                }
+                .galeria img {
+                    border: solid 1px #ccc;
+                    width: 124px;
+                    height: 94px;
+                    padding: 4px;
+                }
+                .galeria img:hover {
+                    border-color: #FF9900;
+                }
+            </style>
+        </head>
+        <body>
+            <h2>Galeria zdjęć - Pokaz mody</h2>
+            <p><img id="zdjecie_d" src="img/zdj1.jpg" alt="Duże zdjecie" /></p>
+            <p class="galeria">
+                <a href="img/zdj1.jpg" title="Zdjęcie 1"><img src="img/zdj1_s.jpg" /></a>
+                <a href="img/zdj2.jpg" title="Zdjęcie 2"><img src="img/zdj2_s.jpg" /></a>
+                <a href="img/zdj3.jpg" title="Zdjęcie 3"><img src="img/zdj3_s.jpg" /></a>
+                <a href="img/zdj4.jpg" title="Zdjęcie 4"><img src="img/zdj4_s.jpg" /></a>
+                <a href="img/zdj5.jpg" title="Zdjęcie 5"><img src="img/zdj5_s.jpg" /></a>
+                <!-- <a href="img/zdj6.jpg" title="Zdjęcie 6"><img src="img/zdj6_s.jpg" /></a> -->
+            </p>
+        </body>
+</html>
