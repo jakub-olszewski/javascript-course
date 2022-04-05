@@ -77,29 +77,37 @@ Do wypisywania elementów tablicy należy użyć forEach
 */
 
             class Payment{// klasa płatność
-                constructor(id, name, account, amount, title, description) {
+                constructor(name, account, amount, title, description, pay) {
 					this.id = id;
                     this.name = name;
                     this.account = account;
                     this.amount = amount;  
 					this.title = title;
-                    this.description = description;    
+                    this.description = description; 
+                    this.pay = pay;   
+
+                    this.setId = function (id) {
+                        this.id = id;
+                    }
                 
                     this.getCode = function () {
                         document.write('<tr>');
-                            document.write('<td class="block" style="width:190px; height:190px;"><div id="qrcode'+this.id+'" style="display:none;align: center;width:150px; height:150px; margin:20px;"></div></td>');
+                            document.write('<td class="block" style="width:190px; height:190px;"><div class="image" id="qrcode'+this.id+'" style="display:none;align: center;width:150px; height:150px; margin:20px;"></div></td>');
                             document.write('<td>');
                                 document.write('<p>Nazwa: <b>'+this.name+'</b></p>');
                                 document.write('<p>Numer konta: <b>'+this.account+'</b></p>');
                                 document.write('<p>Tytuł: <b>'+this.title+'</b></p>');
                                 document.write('<p>Kwota: <b>'+this.amount+' zł</b></p>');
-                                document.write('<button onclick="myFunction('+this.id+')">Pokaż QRcode</button>')
+                                document.write('<p>Opis: <b>'+this.description+'</b></p>');
+                                document.write('<button id="show" onclick="myFunction('+this.id+')">Pokaż QRcode</button>')
                             document.write('</td>');
                         document.write('</tr>');
                     }
 					
 					this.getText = function () {
-						return '|PL|'+account.replace(/\s+/g,'')+'|'+'0'+amount.replace('.','')+'|'+name+'|'+title+"|||"; 
+                        var accountText = new String(account);
+                        var amountText = new String(amount);
+						return '|PL|'+accountText.replace(/\s+/g,'')+'|'+'0'+amountText.replace('.','')+'|'+name+'|'+title+"|||"; 
 					}
 
                     this.generateQrcode = function(){
@@ -115,26 +123,52 @@ Do wypisywania elementów tablicy należy użyć forEach
             }
 
             function myFunction(id) {
-                var x = document.getElementById("qrcode"+id);
-                if (x.style.display === "none") {
-                    x.style.display = "block";
-                } else {
-                    x.style.display = "none";
-                }
+                // var x = document.getElementById("qrcode"+id);
+                // if (x.style.display === "none") {
+                //     x.style.display = "block";
+                // } else {
+                //     x.style.display = "none";
+                // }
+                $(".image").each(function (index) {
+                    $(this).hide();
+                });
+                $("#qrcode"+id).show();
             }
 
             var arrayPayment = [];
 
-            arrayPayment.push(new Payment(1,"Orange","70 1050 0099 7466 0000 9232 0314","59.98","Faktura neostrada", "Internet"));
-            arrayPayment.push(new Payment(2,"Plus","01 8191 0003 2211 5626 4067 1090","123.23","internet", "opis"));
-            arrayPayment.push(new Payment(3,"Gmina Suchy las","97 9043 1054 8026 0405 0297 2001","73.00","Podatek od nieruchomości", ""));
+            var data = new Date();
+            var year = data.getFullYear();
+            var mounth = ('0' + (data.getMonth()+1)).slice(-2);// miesiąc jest liczony od 0 ; slice -2 - dwa ostatnie znaki 
 
-            document.write('<table id="payments"><tr><th>QRCode</th><th>Opis</th></tr>');
+            arrayPayment.push(new Payment("Orange","70 1050 0099 7466 0000 9232 0314","59.98",year+"/"+mounth+" Faktura neostrada", "Internet",true));
+            arrayPayment.push(new Payment("ENEA S.A.","02 1240 6960 0162 2296 2983 0093","100.00","Nr kontrahenta 22962983 "+year+"/"+mounth, "Prąd",true));
+            arrayPayment.push(new Payment("Wspólnona mieszkaniowa","92 1090 0004 9846 0020 0000 0082","500.00",year+"/"+mounth+" opłaty", "Opłaty za mieszkanie",true));
+            arrayPayment.push(new Payment("Kinga i Jakub Olszewscy","16 1020 4027 0000 1102 1548 5755","1250.00",year+"/"+mounth+" Opłata miesięczna (Jakub)", "Opłaty na życie",true));
+
+            arrayPayment.push(new Payment("---------------------------------",""," ", "", false));
+            arrayPayment.push(new Payment("INEA","67 1020 4027 3011 0000 9601 4544","14.99","Abonament internet "+year+"/"+mounth, "Internet Światłowód",false));
+            arrayPayment.push(new Payment("Orange Polska S.A.","40 1140 1241 1068 0000 1683 0630","29.99","Abonament internet "+year+"/"+mounth, "Internet NJU",false));
+            arrayPayment.push(new Payment("Gmina Suchy las","97 9043 1054 8026 0405 0297 2001","73.00","Podatek od nieruchomości "+year+"/"+mounth, "",false));
+            arrayPayment.push(new Payment("Kinga i Jakub Olszewscy","16 1020 4027 0000 1102 1548 5755","350.00",year+"/"+mounth+" Opłata miesięczna (Kinga) ", "Opłaty na życie",false));
+
+            var suma = 0;
             arrayPayment.forEach( function(payment){
+                if(payment.pay){
+                    suma += parseFloat(payment.amount);
+                }
+            });
+            arrayPayment.push(new Payment("Jakub Olszewski","50 1090 1506 0000 0001 0567 4764",suma,year+"/"+mounth+" Opłaty miesięczne", "Opłaty",false));
+
+            document.write('<table id="payments"><tr><th>QRCode</th><th id="opis">Opis</th></tr>');
+            var id = 0;
+            arrayPayment.forEach( function(payment){
+                payment.setId(id++);
 				payment.getCode();
                 payment.generateQrcode();
             });
             document.write('</table>');
+            $("#opis").html('Opis ( Suma wszystkich opłat : '+suma+' zł )');
 
         </script>
     </body>
