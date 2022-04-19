@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pl">
+        <head>
+            <title>ZSE-JS Walidacja</title>
+            <meta charset="utf-8"/>
+            <meta name="author" content="Jakub Olszewski">
+            <link rel="icon" type="image/png" href="./../favicon.png"/>
+            <script src="js/jquery-3.6.0.js"></script>
+            <script src="js/jquery.validate.js"></script>
+            <script src="js/messages_pl.js"></script>
+            <script src="js/skrypt.js"></script>
+            <style type="text/css">
+                body {
+                    font-family: Arial, Helvetica, sans-serif;
+                    font-size: 12px;
+                    font-weight: normal;
+                }
+                #formularz {
+                    width: 450px;
+                    background-color: rgb(204, 157, 248);
+                }
+            </style>
+        </head>
+        <body>
+            <form id="formularz" action="" method="post">
+                <fieldset>
+                <b><h2>Dane osobowe</h2></b><br><br>
+                <b>Nazwisko:</b>
+                <div><input id="nazw" name="nazw" type="text" class="required" minlength="3"></div>
+                <b>Imię:</b>
+                <div><input id="imie" name="imie" type="text" class="required" minlength="2"></div>
+                <b>Zawód:</b>
+                <div><input id="zaw" name="zaw" type="text" class="required" minlength="3"></div>
+                <b>Adres email:</b>
+                <div><input id="email" name="email" type="text" class="required email"></div>
+                <b>Telefon:</b>
+                <div><input id="tel" name="tel" type="text" class="number" minlength="9"></div>
+                <label><b> Pracuje: </b><input type="checkbox" name="opcje" id="opcje" maxlength="1"></label><br><br>
+                <b>Wiadomość:</b><br>
+                <div><textarea id="inf" cols="30" name="inf" rows="5" class="required" minlength="5"></textarea></div><br><br>
+
+                <input class="submit" type="submit" value="Wyślij" />&nbsp; &nbsp;
+                <input type="reset" value="Wyczyść"/>
+                </fieldset>
+            </form>
+        </body>
+</html>

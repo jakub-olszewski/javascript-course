@@ -123,16 +123,18 @@ Do wypisywania elementów tablicy należy użyć forEach
             }
 
             function myFunction(id) {
+                 
+
+                $(".image").each(function (index) {
+                    $(this).hide();
+                });
+                $("#qrcode"+id).toggle();
                 // var x = document.getElementById("qrcode"+id);
                 // if (x.style.display === "none") {
                 //     x.style.display = "block";
                 // } else {
                 //     x.style.display = "none";
                 // }
-                $(".image").each(function (index) {
-                    $(this).hide();
-                });
-                $("#qrcode"+id).show();
             }
 
             var arrayPayment = [];
@@ -151,6 +153,7 @@ Do wypisywania elementów tablicy należy użyć forEach
             arrayPayment.push(new Payment("Orange Polska S.A.","40 1140 1241 1068 0000 1683 0630","29.99","Abonament internet "+year+"/"+mounth, "Internet NJU",false));
             arrayPayment.push(new Payment("Gmina Suchy las","97 9043 1054 8026 0405 0297 2001","73.00","Podatek od nieruchomości "+year+"/"+mounth, "",false));
             arrayPayment.push(new Payment("Kinga i Jakub Olszewscy","16 1020 4027 0000 1102 1548 5755","350.00",year+"/"+mounth+" Opłata miesięczna (Kinga) ", "Opłaty na życie",false));
+            arrayPayment.push(new Payment("UNIQA TU S.A.","38 1030 1944 7404 4851 5047 2073","156.00","Składka za ubezpieczenie, nr polisy 2022-1596796695", "OC Motocykl",false));
 
             var suma = 0;
             arrayPayment.forEach( function(payment){
